@@ -1,19 +1,8 @@
 import express from 'express';
+import router from './routes';
 
 const app = express();
 
-// Routing
-app.get('/', (req, res) => {
-
-  const data = [
-    {
-      id: 1,
-      name: 'Product 1',
-      price: 10
-    }
-  ]
-
-  res.json(data);
-})
+app.use('/api/products', router); 
 
 export default app;
