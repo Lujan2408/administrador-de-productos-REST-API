@@ -1,0 +1,24 @@
+{
+  "name": "rest_api_node_ts_server",
+  "version": "1.0.0",
+  "description": "REST API's con Express y Typescript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lujan2408/administrador-de-productos-REST-API.git"
+  },
+  "author": "Jose David Cardona Lujan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lujan2408/administrador-de-productos-REST-API/issues"
+  },
+  "homepage": "https://github.com/Lujan2408/administrador-de-productos-REST-API#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
