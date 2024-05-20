@@ -17,8 +17,12 @@
   },
   "homepage": "https://github.com/Lujan2408/administrador-de-productos-REST-API#readme",
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
