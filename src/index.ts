@@ -5,6 +5,6 @@ import colors from 'colors';
 const PORT = process.env.PORT || 3000;
 
 // Start the server
-app.listen(3000, () => {
+app.listen(3000, '0.0.0.0',  () => {
   console.log(colors.cyan(`Server running on port ${PORT}`));
 });
