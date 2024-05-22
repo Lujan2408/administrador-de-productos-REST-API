@@ -23,6 +23,6 @@ const app = express();
 //Leer datos de formularios
 app.use(express.json());
 
-app.use('/api/products', router); 
+app.use('/products', router); 
 
 export default app;
