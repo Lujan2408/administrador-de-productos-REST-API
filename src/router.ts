@@ -1,5 +1,5 @@
 import { Router } from "express" 
-import { createProduct, getProductById, getProducts } from "./handlers/product";
+import { createProduct, getProducts, getProductById, updateProduct } from "./handlers/product";
 import { body, param } from 'express-validator'
 import {handleErrors } from "./middleware";
 
@@ -7,6 +7,7 @@ const router = Router();
 
 // Routing
 router.get('/', getProducts);
+
 router.get('/:id', 
 
   param('id').isInt().withMessage('Id no válido'),
@@ -27,11 +28,25 @@ router.post('/',
     .custom(value => value > 0).withMessage('El precio del producto no puede ser negativo'),
   handleErrors,
   createProduct
-)
+);
 
-router.put('/', (req, res) => {
-  res.json("Desde put");
-})
+router.put('/:id', 
+
+  // Validación 
+  body('name')
+  .trim()
+  .notEmpty().withMessage('El nombre del producto no puede estar vacio o contener espacios en blanco'),
+
+  body('price')
+  .isNumeric().withMessage('Precio no válido')
+  .notEmpty().withMessage('El precio del producto no puede estar vacio')
+  .custom(value => value > 0).withMessage('El precio del producto no puede ser negativo'),
+
+  body('availability') 
+  .isBoolean().withMessage('Valor no válido'),
+  handleErrors,
+  updateProduct
+);
 
 router.patch('/', (req, res) => {
   res.json("Desde patch");

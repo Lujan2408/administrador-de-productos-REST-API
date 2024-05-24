@@ -42,3 +42,23 @@ export const createProduct = async (req: Request, res: Response) => {
     console.log(colors.bgRed(error));
   }
 };
+
+export const updateProduct = async (req: Request, res: Response) => {
+    
+    // Obtener el producto a actualizar
+    const { id } = req.params;
+    const product = await Product.findByPk(id); // Consultar un producto por su id
+    
+    // Validar si el producto existe
+    if (!product) {
+      res.status(404).json({ 
+        error: 'Producto no encontrado' 
+      });
+    }
+
+    res.json({ data: product });
+
+    // Actualizar los datos del producto
+    await product.update(req.body);
+    await product.save();
+}
