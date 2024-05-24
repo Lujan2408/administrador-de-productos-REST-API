@@ -62,3 +62,18 @@ export const updateProduct = async (req: Request, res: Response) => {
     await product.update(req.body);
     await product.save();
 }
+
+export const deleteProduct = async (req: Request, res: Response) => {
+    const { id } = req.params; 
+    const product = await Product.findByPk(id);
+
+    if (!product) {
+      res.status(404).json({ 
+        error: 'Producto no encontrado' 
+      });
+    }
+
+    // Eliminar el producto de la base de datos
+    await product.destroy();
+    res.json({ data: 'Producto Eliminado' });
+}
